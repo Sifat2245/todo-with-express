@@ -5,14 +5,14 @@ import { logger } from "./middleware/logger";
 import { userRoutes } from "./modules/users/user.routes";
 import { todosRoutes } from "./modules/todos/todos.routes";
 
-
+//middlewares
 const app = express();
 const port = config.port;
 
+//init db
 initDB();
 
 app.use(express.json());
-
 
 app.get("/", logger, (req: Request, res: Response) => {
   res.send("creating a server with express");
