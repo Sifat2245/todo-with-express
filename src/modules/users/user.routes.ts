@@ -1,11 +1,13 @@
 import { Router } from "express";
 import { userController } from "./user.controller";
+import { logger } from "../../middleware/logger";
+import auth from "../../middleware/auth";
 
-const router = Router()
+const router = Router();
 
 router.post("/", userController.createUser);
 
-router.get("/", userController.getUser);
+router.get("/", logger, auth(), userController.getUser);
 
 router.get("/:id", userController.getSingleUser);
 

@@ -4,6 +4,7 @@ import initDB from "./config/db";
 import { logger } from "./middleware/logger";
 import { userRoutes } from "./modules/users/user.routes";
 import { todosRoutes } from "./modules/todos/todos.routes";
+import { authRoutes } from "./modules/auth/auth.routes";
 
 //middlewares
 const app = express();
@@ -21,6 +22,8 @@ app.get("/", logger, (req: Request, res: Response) => {
 app.use('/users', userRoutes);
 
 app.use('/todos', todosRoutes)
+
+app.use('/auth', authRoutes)
 
 app.use((req, res) => [
   res.status(404).json({

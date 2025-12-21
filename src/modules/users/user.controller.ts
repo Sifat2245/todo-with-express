@@ -4,10 +4,8 @@ import { userService } from "./user.service";
 const createUser = async (req: Request, res: Response) => {
   console.log(req.body);
 
-  const { name, email, age, address } = req.body;
-
   try {
-    const result = await userService.createUser(name, email, age, address);
+    const result = await userService.createUser(req.body);
     console.log(result.rows[0]);
     res.status(201).json({
       message: "user stored successfully",
