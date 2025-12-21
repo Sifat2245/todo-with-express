@@ -17,19 +17,18 @@ app.get("/", logger, (req: Request, res: Response) => {
   res.send("creating a server with express");
 });
 
-app.use('/users', userRoutes);
+app.use("/users", userRoutes);
 
-app.use('/todos', todosRoutes)
+app.use("/todos", todosRoutes);
 
-app.use('/auth', authRoutes)
+app.use("/auth", authRoutes);
 
-app.use((req, res) => [
+app.use((req, res) => {
   res.status(404).json({
     success: false,
     message: "Route not found",
     path: req.path,
-  }),
-]);
+  });
+});
 
-
-export default app
+export default app;
